@@ -1,0 +1,20 @@
+const mysql = require('mysql') const = mysql.createConnection({
+  host: 'demo.cdjwx9xi30x2.us-east-2.rds.amazonaws.com',
+  user: 'admin',
+  port:"3306",
+  password: '12345678',
+  database: 'arqui',
+});
+
+exports.handler = (event, context, callback) => {
+  // allows for using callbacks as finish/error-handlers
+  context.callbackWaitsForEmptyEventLoop = false;
+  const sql = "INSERT INTO tb_nombre (nombre) VALUES ('"+event.nombre+"')";
+  con.query(sql, (err, res) => {
+    if (err) {
+      throw err
+    }
+    callback(null, 'nombre ingresado');
+  });
+    
+};

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>  
+    <head>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type='text/javascript'>
+        $(document).ready(function() {
+            $("#btn_cambiar_nombre").click(function() {
+                var nombre_valor =   $("#txt_nombre").val();
+                $.ajax({
+                    url: "https://xo4bjarpgl.execute-api.us-east-1.amazonaws.com/prueba",//URL AWS
+                    jsonp: "callback",
+                    method: 'POST',
+                    data : JSON.stringify({nombre:nombre_valor}),
+                    async: false,
+                    success: function(respuestaSolicitud) {
+                        
+						alert(JSON.stringify(respuestaSolicitud));
+                    }
+                });
+            });		
+        });
+    </script>   
+
+    <head>  
+<body>
+    <form>
+        Ingresa el nombre :
+        </br>
+        <input type="text" id="txt_nombre" name="txt_nombre" id="txt_nombre">
+        </input>
+        </br>
+        <input type="button" name="btn_cambiar_nombre" id="btn_cambiar_nombre" value="Enviar">
+        </input>
+    </form>
+
+  </body>
+  </html>
+
+ 
